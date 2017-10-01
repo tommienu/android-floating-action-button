@@ -7,8 +7,8 @@ android {
   defaultConfig {
     minSdkVersion 14
     targetSdkVersion 22
-    versionName project.VERSION_NAME
-    versionCode Integer.parseInt(project.VERSION_CODE)
+    versionName android-fab
+    versionCode 1
     consumerProguardFiles 'consumer-proguard-rules.pro'
   }
   buildTypes {
