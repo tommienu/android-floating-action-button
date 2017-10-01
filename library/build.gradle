@@ -7,7 +7,7 @@ android {
   defaultConfig {
     minSdkVersion 14
     targetSdkVersion 22
-    versionName androidfab
+    versionName "android-fab"
     versionCode 1
     consumerProguardFiles 'consumer-proguard-rules.pro'
   }
