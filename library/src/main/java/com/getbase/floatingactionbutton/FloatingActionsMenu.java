@@ -1,7 +1,5 @@
 package com.getbase.floatingactionbutton;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -471,29 +469,12 @@ public class FloatingActionsMenu extends ViewGroup {
 
       // Now that the animations have targets, set them to be played
       if (!animationsSetToPlay) {
-        addLayerTypeListener(mExpandDir, view);
-        addLayerTypeListener(mCollapseDir, view);
-
         mCollapseAnimation.play(mCollapseAlpha);
         mCollapseAnimation.play(mCollapseDir);
         mExpandAnimation.play(mExpandAlpha);
         mExpandAnimation.play(mExpandDir);
         animationsSetToPlay = true;
       }
-    }
-
-    private void addLayerTypeListener(Animator animator, final View view) {
-      animator.addListener(new AnimatorListenerAdapter() {
-        @Override
-        public void onAnimationEnd(Animator animation) {
-          view.setLayerType(LAYER_TYPE_NONE, null);
-        }
-
-        @Override
-        public void onAnimationStart(Animator animation) {
-          view.setLayerType(LAYER_TYPE_HARDWARE, null);
-        }
-      });
     }
   }
 
@@ -638,5 +619,37 @@ public class FloatingActionsMenu extends ViewGroup {
         return new SavedState[size];
       }
     };
+  }
+
+  /**
+   * @return the current Color for normal state.
+   */
+  public int getColorNormal() {
+    return mAddButtonColorNormal;
+  }
+
+  public void setColorNormalResId(@ColorRes int colorNormal) {
+    setColorNormal(getColor(colorNormal));
+  }
+
+  public void setColorNormal(int color) {
+    mAddButtonColorNormal = color;
+    mAddButton.setColorNormal(color);
+  }
+
+  /**
+   * @return the current color for pressed state.
+   */
+  public int getColorPressed() {
+    return mAddButtonColorPressed;
+  }
+
+  public void setColorPressedResId(@ColorRes int colorPressed) {
+    setColorPressed(getColor(colorPressed));
+  }
+
+  public void setColorPressed(int color) {
+    mAddButtonColorPressed = color;
+    mAddButton.setColorPressed(color);
   }
 }
